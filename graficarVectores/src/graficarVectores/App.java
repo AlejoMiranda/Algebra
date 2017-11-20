@@ -623,7 +623,11 @@ public class App extends javax.swing.JFrame {
             listCoordenadas.add(coor);
 
             for (Coordenada c : listCoordenadas) {
-                graficarPunto(pnlPlano.getGraphics(), c.getX(), c.getY());
+                if (c.getX() > -10 && c.getY() > -10 && c.getX() < 10 && c.getY() < 10) {
+                    graficarPunto(pnlPlano.getGraphics(), (c.getX() * 10), (c.getY() * 10));
+                } else {
+                    graficarPunto(pnlPlano.getGraphics(), c.getX(), c.getY());
+                }
             }
 
             for (Coordenada c : listCoordenadas) {
@@ -644,10 +648,18 @@ public class App extends javax.swing.JFrame {
             }
 
             // une los puntos para generar la figura
-            graficarVector(pnlPlano.getGraphics(),/*x*/ x1,/*y1*/ y1,/*x2*/ x2,/*y2*/ y2);
-            graficarVector(pnlPlano.getGraphics(),/*x*/ x2,/*y1*/ y2,/*x2*/ x3,/*y2*/ y3);
-            graficarVector(pnlPlano.getGraphics(),/*x*/ x1,/*y1*/ y1,/*x2*/ x3,/*y2*/ y3);
+            if (x1 < 10 && x2 < 10 && x3 < 10 && y1 < 10 && y2 < 10 && y3 < 10
+                    && x1 > -10 && x2 > -10 && x3 > -10 && y1 > -10 && y2 > -10 && y3 > -10) {
+                graficarVector(pnlPlano.getGraphics(),/*x*/ x1 * 10,/*y1*/ y1 * 10,/*x2*/ x2 * 10,/*y2*/ y2 * 10);
+                graficarVector(pnlPlano.getGraphics(),/*x*/ x2 * 10,/*y1*/ y2 * 10,/*x2*/ x3 * 10,/*y2*/ y3 * 10);
+                graficarVector(pnlPlano.getGraphics(),/*x*/ x1 * 10,/*y1*/ y1 * 10,/*x2*/ x3 * 10,/*y2*/ y3 * 10);
+            } else {
+                graficarVector(pnlPlano.getGraphics(),/*x*/ x1,/*y1*/ y1,/*x2*/ x2,/*y2*/ y2);
+                graficarVector(pnlPlano.getGraphics(),/*x*/ x2,/*y1*/ y2,/*x2*/ x3,/*y2*/ y3);
+                graficarVector(pnlPlano.getGraphics(),/*x*/ x1,/*y1*/ y1,/*x2*/ x3,/*y2*/ y3);
+            }
 
+//            
             punto = new Punto(x1, x2, y1, y2);
             float distAB = data.calcularDistancia(punto);
             System.out.println("Distancia AB : " + distAB);
@@ -663,7 +675,7 @@ public class App extends javax.swing.JFrame {
             String tipo = data.identificarTipoTriangulo(distAB, distBC, distAC);
             lblMostrarNombre.setText(tipo);
             float perimetro = data.getPerimetroTriangulo(distAB, distBC, distAC);
-            lblMostrarPerimetro.setText(Integer.toString((int)perimetro));
+            lblMostrarPerimetro.setText(Integer.toString((int) perimetro));
             float area = data.getAreaTringulo(tipo, perimetro, distAB, distBC, distAC);
             lblMostrarArea.setText(Integer.toString((int) area));
 
@@ -722,7 +734,11 @@ public class App extends javax.swing.JFrame {
             listCoordenadas.add(coor);
 
             for (Coordenada c : listCoordenadas) {
-                graficarPunto(pnlPlano.getGraphics(), c.getX(), c.getY());
+                if (c.getX() > -10 && c.getY() > -10 && c.getX() < 10 && c.getY() < 10) {
+                    graficarPunto(pnlPlano.getGraphics(), (c.getX() * 10), (c.getY() * 10));
+                } else {
+                    graficarPunto(pnlPlano.getGraphics(), c.getX(), c.getY());
+                }
             }
 
             for (Coordenada c : listCoordenadas) {
@@ -745,10 +761,18 @@ public class App extends javax.swing.JFrame {
             }
 
             // une los puntos para generar la figura
-            graficarVector(pnlPlano.getGraphics(),/*x*/ x1,/*y1*/ y1,/*x2*/ x2,/*y2*/ y2);
-            graficarVector(pnlPlano.getGraphics(),/*x*/ x2,/*y1*/ y2,/*x2*/ x3,/*y2*/ y3);
-            graficarVector(pnlPlano.getGraphics(),/*x*/ x3,/*y1*/ y3,/*x2*/ x4,/*y2*/ y4);
-            graficarVector(pnlPlano.getGraphics(),/*x*/ x1,/*y1*/ y1,/*x2*/ x4,/*y2*/ y4);
+            if (x1 < 10 && x2 < 10 && x3 < 10 && y1 < 10 && y2 < 10 && y3 < 10 && x4 < 10 && y4 < 10
+                    && x1 > -10 && x2 > -10 && x3 > -10 && y1 > -10 && y2 > -10 && y3 > -10 && x4 > -10 && y4 > -10) {
+                graficarVector(pnlPlano.getGraphics(),/*x*/ x1 * 10,/*y1*/ y1 * 10,/*x2*/ x2 * 10,/*y2*/ y2 * 10);
+                graficarVector(pnlPlano.getGraphics(),/*x*/ x2 * 10,/*y1*/ y2 * 10,/*x2*/ x3 * 10,/*y2*/ y3 * 10);
+                graficarVector(pnlPlano.getGraphics(),/*x*/ x3 * 10,/*y1*/ y3 * 10,/*x2*/ x4 * 10,/*y2*/ y4 * 10);
+                graficarVector(pnlPlano.getGraphics(),/*x*/ x1 * 10,/*y1*/ y1 * 10,/*x2*/ x4 * 10,/*y2*/ y4 * 10);
+            } else {
+                graficarVector(pnlPlano.getGraphics(),/*x*/ x1,/*y1*/ y1,/*x2*/ x2,/*y2*/ y2);
+                graficarVector(pnlPlano.getGraphics(),/*x*/ x2,/*y1*/ y2,/*x2*/ x3,/*y2*/ y3);
+                graficarVector(pnlPlano.getGraphics(),/*x*/ x3,/*y1*/ y3,/*x2*/ x4,/*y2*/ y4);
+                graficarVector(pnlPlano.getGraphics(),/*x*/ x1,/*y1*/ y1,/*x2*/ x4,/*y2*/ y4);
+            }
 
             punto = new Punto(x1, x2, y1, y2);
             float distAB = data.calcularDistancia(punto);
@@ -765,19 +789,19 @@ public class App extends javax.swing.JFrame {
             punto = new Punto(x1, x4, y1, y4);
             float distAD = data.calcularDistancia(punto);
             System.out.println("Distancia AD : " + distAD);
-            
+
             Coordenada coo1 = new Coordenada(x1, y1);
             Coordenada coo2 = new Coordenada(x2, y2);
             Coordenada coo3 = new Coordenada(x3, y3);
             Coordenada coo4 = new Coordenada(x4, y4);
-            
-            String tipo = data.identificarTipoPoligono(distAB, distBC, distCD, distAD, coo1, coo2, coo3, coo4);            
+
+            String tipo = data.identificarTipoPoligono(distAB, distBC, distCD, distAD, coo1, coo2, coo3, coo4);
             lblMostrarNombre.setText(tipo);
-            
+
             float perimetro = data.getPerimetroPoligono(distAB, distBC, distCD, distAD);
             lblMostrarPerimetro.setText(Integer.toString((int) perimetro));
-            
-            float area = data.getAreaPoligono(tipo, distAB, distBC, distCD, distAD);
+
+            float area = data.getAreaPoligono(tipo, distAB, distBC, distCD, distAD, coo1, coo2, coo3, coo4);
             lblMostrarArea.setText(Integer.toString((int) area));
 
             txtPuntoA.setText(null);
@@ -839,17 +863,17 @@ public class App extends javax.swing.JFrame {
     private void btnIngresarOtroPuntoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarOtroPuntoActionPerformed
         Graphics g = pnlPlano.getGraphics();
         g.clearRect(0, 0, pnlPlano.getWidth(), pnlPlano.getHeight());
-        
+
         lblMostrarNombre.setText(null);
         lblMostrarArea.setText(null);
         lblMostrarPerimetro.setText(null);
-        
+
         lblMostrarNpA.setText(null);
         lblMostrarNpB.setText(null);
         lblMostrarNpC.setText(null);
         lblMostrarNpD.setText(null);
-        
-        btnGenerar.setEnabled(true);     
+
+        btnGenerar.setEnabled(true);
     }//GEN-LAST:event_btnIngresarOtroPuntoActionPerformed
 
     private void btnTranslacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTranslacionActionPerformed
@@ -869,62 +893,128 @@ public class App extends javax.swing.JFrame {
 
         // a(punto original) + v(vectorTranslacion) = nuevo punto
         if (cantCoordenadas == 3) {
-            nX1 = (x1 + (x));
-            nY1 = (y1 + (y));
-            lblMostrarNpA.setText("(" + nX1 + "," + nY1 + ")");
-            graficarPunto(g, nX1, nY1); // grafico el nuevo punto del vector
+            if (x1 < 10 && x2 < 10 && x3 < 10 && y1 < 10 && y2 < 10 && y3 < 10 && x4 < 10 && y4 < 10
+                    && x1 > -10 && x2 > -10 && x3 > -10 && y1 > -10 && y2 > -10 && y3 > -10 && x4 > -10 && y4 > -10) {
 
-            nX2 = (x2 + (x));
-            nY2 = (y2 + (y));
-            lblMostrarNpB.setText("(" + nX2 + "," + nY2 + ")");
-            graficarPunto(g, nX2, nY2); // grafico el nuevo punto del vector
+                nX1 = ((x1 * 10) + (x));
+                nY1 = ((y1 * 10) + (y));
+                lblMostrarNpA.setText("(" + nX1 + "," + nY1 + ")");
+                graficarPunto(g, nX1, nY1); // grafico el nuevo punto del vector
 
-            nX3 = (x3 + (x));
-            nY3 = (y3 + (y));
-            lblMostrarNpC.setText("(" + nX3 + "," + nY3 + ")");
-            graficarPunto(g, nX3, nY3); // grafico el nuevo punto del vector
+                nX2 = ((x2 * 10) + (x));
+                nY2 = ((y2 * 10) + (y));
+                lblMostrarNpB.setText("(" + nX2 + "," + nY2 + ")");
+                graficarPunto(g, nX2, nY2); // grafico el nuevo punto del vector
 
-            graficarVectorTranslacion(pnlPlano.getGraphics(),/*x*/ nX1,/*y1*/ nY1,/*x2*/ nX2,/*y2*/ nY2);
-            graficarVectorTranslacion(pnlPlano.getGraphics(),/*x*/ nX2,/*y1*/ nY2,/*x2*/ nX3,/*y2*/ nY3);
-            graficarVectorTranslacion(pnlPlano.getGraphics(),/*x*/ nX1,/*y1*/ nY1,/*x2*/ nX3,/*y2*/ nY3);
+                nX3 = ((x3 * 10) + (x));
+                nY3 = ((y3 * 10) + (y));
+                lblMostrarNpC.setText("(" + nX3 + "," + nY3 + ")");
+                graficarPunto(g, nX3, nY3); // grafico el nuevo punto del vector
 
-            txtVectorTranslacion.setEnabled(false);
-            txtVectorTranslacion.setText(null);
-            btnTranslacion.setEnabled(false);
+                graficarVectorTranslacion(pnlPlano.getGraphics(),/*x*/ nX1,/*y1*/ nY1,/*x2*/ nX2,/*y2*/ nY2);
+                graficarVectorTranslacion(pnlPlano.getGraphics(),/*x*/ nX2,/*y1*/ nY2,/*x2*/ nX3,/*y2*/ nY3);
+                graficarVectorTranslacion(pnlPlano.getGraphics(),/*x*/ nX1,/*y1*/ nY1,/*x2*/ nX3,/*y2*/ nY3);
 
-            btnIngresarOtroPunto.setEnabled(true);
+                txtVectorTranslacion.setEnabled(false);
+                txtVectorTranslacion.setText(null);
+                btnTranslacion.setEnabled(false);
+
+                btnIngresarOtroPunto.setEnabled(true);
+            } else {
+                nX1 = (x1 + (x));
+                nY1 = (y1 + (y));
+                lblMostrarNpA.setText("(" + nX1 + "," + nY1 + ")");
+                graficarPunto(g, nX1, nY1); // grafico el nuevo punto del vector
+
+                nX2 = (x2 + (x));
+                nY2 = (y2 + (y));
+                lblMostrarNpB.setText("(" + nX2 + "," + nY2 + ")");
+                graficarPunto(g, nX2, nY2); // grafico el nuevo punto del vector
+
+                nX3 = (x3 + (x));
+                nY3 = (y3 + (y));
+                lblMostrarNpC.setText("(" + nX3 + "," + nY3 + ")");
+                graficarPunto(g, nX3, nY3); // grafico el nuevo punto del vector
+
+                graficarVectorTranslacion(pnlPlano.getGraphics(),/*x*/ nX1,/*y1*/ nY1,/*x2*/ nX2,/*y2*/ nY2);
+                graficarVectorTranslacion(pnlPlano.getGraphics(),/*x*/ nX2,/*y1*/ nY2,/*x2*/ nX3,/*y2*/ nY3);
+                graficarVectorTranslacion(pnlPlano.getGraphics(),/*x*/ nX1,/*y1*/ nY1,/*x2*/ nX3,/*y2*/ nY3);
+
+                txtVectorTranslacion.setEnabled(false);
+                txtVectorTranslacion.setText(null);
+                btnTranslacion.setEnabled(false);
+
+                btnIngresarOtroPunto.setEnabled(true);
+            }
 
         } else if (cantCoordenadas == 4) {
-            nX1 = (x1 + (x));
-            nY1 = (y1 + (y));
-            lblMostrarNpA.setText("(" + nX1 + "," + nY1 + ")");
-            graficarPunto(g, nX1, nY1); // grafico el nuevo punto del vector
 
-            nX2 = (x2 + (x));
-            nY2 = (y2 + (y));
-            lblMostrarNpB.setText("(" + nX2 + "," + nY2 + ")");
-            graficarPunto(g, nX2, nY2); // grafico el nuevo punto del vector
+            if (x1 < 10 && x2 < 10 && x3 < 10 && y1 < 10 && y2 < 10 && y3 < 10 && x4 < 10 && y4 < 10
+                    && x1 > -10 && x2 > -10 && x3 > -10 && y1 > -10 && y2 > -10 && y3 > -10 && x4 > -10 && y4 > -10) {
 
-            nX3 = (x3 + (x));
-            nY3 = (y3 + (y));
-            lblMostrarNpC.setText("(" + nX3 + "," + nY3 + ")");
-            graficarPunto(g, nX3, nY3); // grafico el nuevo punto del vector
+                nX1 = ((x1 * 10) + (x));
+                nY1 = ((y1 * 10) + (y));
+                lblMostrarNpA.setText("(" + nX1 + "," + nY1 + ")");
+                graficarPunto(g, nX1, nY1); // grafico el nuevo punto del vector
 
-            nX4 = (x4 + (x));
-            nY4 = (y4 + (y));
-            lblMostrarNpD.setText("(" + nX4 + "," + nY4 + ")");
-            graficarPunto(g, nX4, nY4); // grafico el nuevo punto del vector
+                nX2 = ((x2 * 10) + (x));
+                nY2 = ((y2 * 10) + (y));
+                lblMostrarNpB.setText("(" + nX2 + "," + nY2 + ")");
+                graficarPunto(g, nX2, nY2); // grafico el nuevo punto del vector
 
-            graficarVectorTranslacion(pnlPlano.getGraphics(),/*x*/ nX1,/*y1*/ nY1,/*x2*/ nX2,/*y2*/ nY2);
-            graficarVectorTranslacion(pnlPlano.getGraphics(),/*x*/ nX2,/*y1*/ nY2,/*x2*/ nX3,/*y2*/ nY3);
-            graficarVectorTranslacion(pnlPlano.getGraphics(),/*x*/ nX3,/*y1*/ nY3,/*x2*/ nX4,/*y2*/ nY4);
-            graficarVectorTranslacion(pnlPlano.getGraphics(),/*x*/ nX1,/*y1*/ nY1,/*x2*/ nX4,/*y2*/ nY4);
+                nX3 = ((x3 * 10) + (x));
+                nY3 = ((y3 * 10) + (y));
+                lblMostrarNpC.setText("(" + nX3 + "," + nY3 + ")");
+                graficarPunto(g, nX3, nY3); // grafico el nuevo punto del vector
 
-            txtVectorTranslacion.setEnabled(false);
-            txtVectorTranslacion.setText(null);
-            btnTranslacion.setEnabled(false);
+                nX4 = ((x4 * 10) + (x));
+                nY4 = ((y4 * 10) + (y));
+                lblMostrarNpD.setText("(" + nX4 + "," + nY4 + ")");
+                graficarPunto(g, nX4, nY4); // grafico el nuevo punto del vector
 
-            btnIngresarOtroPunto.setEnabled(true);
+                graficarVectorTranslacion(pnlPlano.getGraphics(),/*x*/ nX1,/*y1*/ nY1,/*x2*/ nX2,/*y2*/ nY2);
+                graficarVectorTranslacion(pnlPlano.getGraphics(),/*x*/ nX2,/*y1*/ nY2,/*x2*/ nX3,/*y2*/ nY3);
+                graficarVectorTranslacion(pnlPlano.getGraphics(),/*x*/ nX3,/*y1*/ nY3,/*x2*/ nX4,/*y2*/ nY4);
+                graficarVectorTranslacion(pnlPlano.getGraphics(),/*x*/ nX1,/*y1*/ nY1,/*x2*/ nX4,/*y2*/ nY4);
+
+                txtVectorTranslacion.setEnabled(false);
+                txtVectorTranslacion.setText(null);
+                btnTranslacion.setEnabled(false);
+
+                btnIngresarOtroPunto.setEnabled(true);
+
+            } else {
+                nX1 = (x1 + (x));
+                nY1 = (y1 + (y));
+                lblMostrarNpA.setText("(" + nX1 + "," + nY1 + ")");
+                graficarPunto(g, nX1, nY1); // grafico el nuevo punto del vector
+
+                nX2 = (x2 + (x));
+                nY2 = (y2 + (y));
+                lblMostrarNpB.setText("(" + nX2 + "," + nY2 + ")");
+                graficarPunto(g, nX2, nY2); // grafico el nuevo punto del vector
+
+                nX3 = (x3 + (x));
+                nY3 = (y3 + (y));
+                lblMostrarNpC.setText("(" + nX3 + "," + nY3 + ")");
+                graficarPunto(g, nX3, nY3); // grafico el nuevo punto del vector
+
+                nX4 = (x4 + (x));
+                nY4 = (y4 + (y));
+                lblMostrarNpD.setText("(" + nX4 + "," + nY4 + ")");
+                graficarPunto(g, nX4, nY4); // grafico el nuevo punto del vector
+
+                graficarVectorTranslacion(pnlPlano.getGraphics(),/*x*/ nX1,/*y1*/ nY1,/*x2*/ nX2,/*y2*/ nY2);
+                graficarVectorTranslacion(pnlPlano.getGraphics(),/*x*/ nX2,/*y1*/ nY2,/*x2*/ nX3,/*y2*/ nY3);
+                graficarVectorTranslacion(pnlPlano.getGraphics(),/*x*/ nX3,/*y1*/ nY3,/*x2*/ nX4,/*y2*/ nY4);
+                graficarVectorTranslacion(pnlPlano.getGraphics(),/*x*/ nX1,/*y1*/ nY1,/*x2*/ nX4,/*y2*/ nY4);
+
+                txtVectorTranslacion.setEnabled(false);
+                txtVectorTranslacion.setText(null);
+                btnTranslacion.setEnabled(false);
+
+                btnIngresarOtroPunto.setEnabled(true);
+            }
         }
 
 
@@ -1086,7 +1176,7 @@ public class App extends javax.swing.JFrame {
 
         if (nombreFigura.equalsIgnoreCase("Trapezoide")) {
             contTrapezoide = contTrapezoide + 1;
-            lblContTrapecio.setText(Integer.toString(contTrapezoide));
+            lblContTrapez.setText(Integer.toString(contTrapezoide));
         }
     }
 
